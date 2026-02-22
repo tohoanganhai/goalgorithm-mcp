@@ -130,14 +130,18 @@ def get_current_season() -> int:
     return now.year if now.month >= 8 else now.year - 1
 
 
-def aggregate_team_stats(teams: list[dict]) -> dict[str, TeamStats]:
+def aggregate_team_stats(teams: dict | list) -> dict[str, TeamStats]:
     """Aggregate per-match xG/xGA into per-90 averages.
 
     Exact port of PHP GoalGorithm_Data_Fetcher::aggregate_team_stats().
+    Understat returns teams as a dict keyed by team ID, not a list.
     """
     result: dict[str, TeamStats] = {}
 
-    for team in teams:
+    # Understat returns dict {team_id: {...}}, normalize to list of dicts
+    team_list = teams.values() if isinstance(teams, dict) else teams
+
+    for team in team_list:
         title = team.get("title", "")
         history = team.get("history", [])
 
