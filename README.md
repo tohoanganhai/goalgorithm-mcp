@@ -28,6 +28,35 @@ Add to your Claude Desktop config (`claude_desktop_config.json`):
 }
 ```
 
+## Example Usage
+
+Once configured, just ask Claude naturally:
+
+> **You:** "Predict Arsenal vs Chelsea this weekend"
+
+Claude will call the `predict_match` tool and respond with something like:
+
+> **Claude:** Here's the prediction for **Arsenal vs Chelsea** (Premier League):
+>
+> | Outcome | Probability |
+> |---------|-------------|
+> | Arsenal Win | 52.4% |
+> | Draw | 22.7% |
+> | Chelsea Win | 24.9% |
+>
+> - **Expected Goals:** Arsenal 1.85 — Chelsea 1.23
+> - **Over 2.5 Goals:** 58.3% | **Under 2.5:** 41.7%
+> - **Both Teams to Score:** Yes 52.1% | No 47.9%
+> - **Most Likely Scores:** 1-0 (12.8%), 1-1 (11.2%), 2-1 (10.5%)
+>
+> Arsenal are clear favorites at home with stronger attacking xG.
+
+Other things you can ask:
+
+- *"Show me the La Liga xG table"* — calls `get_league_table`
+- *"Which leagues are available?"* — calls `list_leagues`
+- *"Who's more likely to win, Bayern or Dortmund?"* — calls `predict_match`
+
 ## Tools
 
 ### `predict_match`
@@ -38,7 +67,7 @@ Predict soccer match outcome using xG-based Poisson model.
 predict_match(home_team="Arsenal", away_team="Chelsea", league="EPL")
 ```
 
-Returns win/draw/loss probabilities, over/under 2.5 goals, BTTS, top 3 most likely scores.
+**Returns:** win/draw/loss %, over/under 2.5, BTTS, top 3 scores, expected goals, score matrix.
 
 ### `list_leagues`
 
