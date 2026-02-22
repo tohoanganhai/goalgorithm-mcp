@@ -2,6 +2,8 @@
 
 Soccer match predictions using xG data and Poisson distribution, exposed as MCP tools for Claude Desktop/Code.
 
+> **Proven in production** — This prediction model is actively used on [BongdaNET](https://bongdanet66.com), a football analytics platform that combines expert analysis with data science to deliver accurate match predictions. BongdaNET also serves as a comprehensive football data hub — offering odds from top bookmakers, live results, fixtures, and standings for leagues worldwide — providing a smart betting experience for punters and football enthusiasts alike.
+
 ## Install
 
 ```bash
